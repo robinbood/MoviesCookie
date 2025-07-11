@@ -9,9 +9,9 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
-  position: relative;
+  position: abso;
 }
 body::before {
   content: "";
@@ -33,9 +33,9 @@ body::before {
   }
 }
 .app {
-  max-width: 1280px;
+  max-width: auto;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0px;
   text-align: center;
   position: relative;
   z-index: 1;
