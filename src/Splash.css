@@ -9,8 +9,8 @@
     #1a1a2e 20%,
     #16213e 40%,
     #0f3460 60%,
-    #0e2954 80%,
-    #0a0a0a 100%
+    #082452 80%,
+    #02000f 100%
   );
   position: relative;
   overflow: hidden;
@@ -20,6 +20,11 @@
   align-items: center;
   color: white;
   font-family: 'Arial', sans-serif;
+  transition: background-color 5ms 10ms cubic-bezier(0.23, 1, 0.320, 1);
+  
+}
+.logo:hover {
+  background-color: #031020;
 }
 
 /* Lightning effect overlay */
