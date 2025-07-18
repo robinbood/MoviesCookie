@@ -1,5 +1,9 @@
 import "./Splash.css"
-export const SplashPage = () => {
+
+interface Next {
+  moveAhead: () => void
+}
+export const SplashPage = ({moveAhead} : Next) => {
     return (
       <div className="Splash">
         <div className="particle"></div>
@@ -65,7 +69,7 @@ export const SplashPage = () => {
 
 
         <div className="logo">
-
+          <button onClick={moveAhead} className="next" ></button>
         </div>
 
         <h2>Welcome to the WatchList</h2>
@@ -74,6 +78,7 @@ export const SplashPage = () => {
         <div className="loading-container">
           <div className="loading-bar"></div>
         </div>
+        
 
       </div>
     )
