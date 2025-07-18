@@ -69,16 +69,10 @@ export const SplashPage = ({moveAhead} : Next) => {
 
 
         <div className="logo">
-          <button onClick={moveAhead} className="next" ></button>
+          <button onClick={moveAhead} className="next" >wtf</button>
         </div>
 
-        <h2>Welcome to the WatchList</h2>
-
-
-        <div className="loading-container">
-          <div className="loading-bar"></div>
-        </div>
-        
+        <h2><pre>WatchList</pre></h2>
 
       </div>
     )
