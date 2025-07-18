@@ -22,9 +22,6 @@
   font-family: "Arial", sans-serif;
   transition: background-color 5ms 10ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.logo:hover {
-  background-color: #031020;
-}
 
 /* Lightning effect overlay */
 .Splash::before {
@@ -523,7 +520,6 @@
   box-shadow: 0 0 30px rgba(173, 216, 230, 0.4),
     inset 0 0 30px rgba(255, 255, 255, 0.1);
   animation: pulse 2s infinite;
-  
 }
 
 @keyframes pulse {
@@ -628,4 +624,76 @@ button.next {
   right: 0em;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   opacity: 0;
+}
+.logo:hover {
+  /* Enhance the pulse animation with a stronger scale and glow */
+  animation: electricPulse 0.6s ease-in-out infinite;
+  border-color: rgba(173, 216, 230, 0.8);
+  box-shadow: 0 0 50px rgba(173, 216, 230, 0.8),
+    inset 0 0 50px rgba(255, 255, 255, 0.3);
+  transform: scale(1.1); /* Slight scale-up on hover */
+}
+
+/* Create pseudo-elements for spark particles */
+.logo:hover::before,
+.logo:hover::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(173, 216, 230, 1);
+  animation: spark 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+.logo:hover::before {
+  top: -10px;
+  left: 50%;
+  animation-name: sparkUp;
+}
+
+.logo:hover::after {
+  bottom: -10px;
+  right: 50%;
+  animation-name: sparkDown;
+}
+
+/* Keyframes for the electric pulse */
+@keyframes electricPulse {
+  0%,
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(173, 216, 230, 0.8),
+      inset 0 0 50px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 70px rgba(173, 216, 230, 1),
+      inset 0 0 70px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Keyframes for spark particles */
+@keyframes sparkUp {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20px, -30px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkDown {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-20px, 30px) scale(0.5);
+    opacity: 0;
+  }
 }
