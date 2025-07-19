@@ -5,9 +5,13 @@ import  SplashPage  from "./SplashPage";
 const server = serve({
   routes: {
     // Serve index.html for all unmatched routes.
-    "/*": new Response("WTF you tryna do ?"),
+    "/*": setTimeout(() => {
+          Response.redirect("/api/home")
+        }, 200),
 
-    "/api/signup": {
+    
+
+    "/api/login": {
       async GET(req) {
         return Response.json({
           message: "Hello, world!",
