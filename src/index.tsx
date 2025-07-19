@@ -1,12 +1,13 @@
 import { serve } from "bun";
 import index from "./index.html";
+import  SplashPage  from "./SplashPage";
 
 const server = serve({
   routes: {
     // Serve index.html for all unmatched routes.
-    "/*": index,
+    "/*": new Response("WTF you tryna do ?"),
 
-    "/api/hello": {
+    "/api/signup": {
       async GET(req) {
         return Response.json({
           message: "Hello, world!",
