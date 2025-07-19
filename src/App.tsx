@@ -1,6 +1,6 @@
 import { useState } from "react";
  import "./index.css";
-import {SplashPage} from "./SplashPage";
+import SplashPage from "./SplashPage";
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="app">
 
-     {splash && <SplashPage/>}
+     {splash && <SplashPage moveAhead={() => setSplash(false)}/>}
     
     </div>
   );

@@ -3,7 +3,7 @@ import "./Splash.css"
 interface Next {
   moveAhead: () => void
 }
-export const SplashPage = ({moveAhead} : Next) => {
+const SplashPage = ({moveAhead} : Next) => {
     return (
       <div className="Splash">
         <div className="particle"></div>
@@ -78,3 +78,4 @@ export const SplashPage = ({moveAhead} : Next) => {
     )
 }
 
+export default SplashPage;
