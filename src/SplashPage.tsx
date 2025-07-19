@@ -68,8 +68,8 @@ export const SplashPage = ({moveAhead} : Next) => {
         <div className="particle"></div>
 
 
-        <div className="logo">
-          <button onClick={moveAhead} className="next" >wtf</button>
+        <div className="logo" onClick={moveAhead} role="button">
+          
         </div>
 
         <h2><pre>WatchList</pre></h2>
