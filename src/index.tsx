@@ -1,13 +1,10 @@
 import { serve } from "bun";
 import index from "./index.html";
-import  SplashPage  from "./SplashPage";
 
 const server = serve({
   routes: {
     // Serve index.html for all unmatched routes.
-    "/*": setTimeout(() => {
-          Response.redirect("/api/home")
-        }, 200),
+    "/*": index,
 
     
 
