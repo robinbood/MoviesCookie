@@ -40,7 +40,9 @@
 }
 
 .logo:hover {
-  background-color: #031020;
+  background-color: #410e01 ;
+  opacity: 0.27;
+  pointer-events: stroke;
 }
 
 /* Lightning effect overlay */
@@ -55,7 +57,7 @@
   top: 0;
 
   left: 0;
-
+  
   width: 100%;
 
   height: 100%;

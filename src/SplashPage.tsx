@@ -1,9 +1,12 @@
 import "./Splash.css"
+import { Link, useNavigate } from "react-router"
 
-interface Next {
-  moveAhead: () => void
-}
-const SplashPage = ({moveAhead} : Next) => {
+
+const SplashPage = () => {
+  const navigate = useNavigate()
+  const onClick =() => {
+    navigate("/api/login")
+  }
     return (
       <div className="Splash">
         <div className="particle"></div>
@@ -67,8 +70,7 @@ const SplashPage = ({moveAhead} : Next) => {
         <div className="particle"></div>
         <div className="particle"></div>
 
-
-        <div className="logo" onClick={moveAhead} role="button">
+        <div className="logo" onClick={onClick} role="button">
           
         </div>
 

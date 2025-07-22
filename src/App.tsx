@@ -1,15 +1,16 @@
-import { useState } from "react";
- import "./index.css";
+
+ import { Routes,Route } from "react-router";
+import "./index.css";
 import SplashPage from "./SplashPage";
 
 
 function App() {
-  const [splash,setSplash] = useState<boolean>(true)
 
   return (
     <div className="app">
-
-     {splash && <SplashPage moveAhead={() => setSplash(false)}/>}
+      <Routes>
+        <Route path="/" element={<SplashPage/>}/>
+      </Routes>
     
     </div>
   );

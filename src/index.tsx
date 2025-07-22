@@ -9,12 +9,7 @@ const server = serve({
     
 
     "/api/login": {
-      async GET(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "GET",
-        });
-      },
+      
       async PUT(req) {
         return Response.json({
           message: "Hello, world!",
