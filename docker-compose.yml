@@ -1,0 +1,6 @@
+services:
+  app:
+    image: bun-server
+    build: .
+    ports: 
+    - 3000:3000
