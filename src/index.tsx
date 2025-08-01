@@ -10,7 +10,7 @@ const server = serve({
 
     "/api/login": {
       
-      async PUT(req) {
+      async POST(req) {
         return Response.json({
           message: "Hello, world!",
           method: "PUT",
