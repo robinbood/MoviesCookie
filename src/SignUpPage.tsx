@@ -18,7 +18,7 @@ const SignupPage = () => {
     return (
         <>
         <form onSubmit={handleSubmit((data) => {
-
+            
         })}></form>
             <input {...register("name",{required:"This is required"})} placeholder="Johnny"/>
             <input {...register("username",{
