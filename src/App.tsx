@@ -3,6 +3,7 @@
 import "./index.css";
 import SplashPage from "./SplashPage";
 import SignupPage from "./SignUpPage";
+import SignInPage from "./LoginPage";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SplashPage/>}/>
         <Route path="/api/Signup" element={<SignupPage/>}/>
+        <Route path="/api/Signin" element={<SignInPage/>}/>
       </Routes>
     
     </div>

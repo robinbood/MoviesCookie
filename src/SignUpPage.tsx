@@ -63,7 +63,7 @@ const SignupPage = () => {
         <span className="error-message">{errors.password?.message}</span>
 
 
-        <p>Already A Member?<Link to="/api/Login">Login</Link></p>
+        <p>Already A Member?<Link to="/api/Signin">Sign in</Link></p>
 
         <input type="submit" className="submit" value="Sign Up" />
       </form>
