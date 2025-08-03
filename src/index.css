@@ -11,7 +11,7 @@ body {
   place-items: center;
   min-width: 100vw;
   min-height: 100vh;
-  position: abso;
+  position: absolute;
 }
 body::before {
   content: "";

@@ -1,5 +1,5 @@
 import "./Splash.css"
-import { Link, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 
 const SplashPage = () => {

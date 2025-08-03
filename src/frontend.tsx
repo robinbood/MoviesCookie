@@ -8,14 +8,12 @@
 
 import { createRoot } from "react-dom/client";
 import  App  from "./App";
-import { BrowserRouter as Router,Route,Routes } from "react-router";
+import { BrowserRouter as Router } from "react-router";
 
 const elem = document.getElementById("root")!;
 const app = (
   <Router>
-    <Routes>
-      <Route path="/" element={<App/>}/>
-    </Routes>
+    <App/>
   </Router>
 );
 

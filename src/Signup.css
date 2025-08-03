@@ -1,0 +1,232 @@
+/* CSS Reset for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles with starry, deep learning-inspired background */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at center, #1a1a2e 0%, #0b0b1b 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0e0ff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Particle effect for starry background */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.2)"/><circle cx="100" cy="200" r="1.5" fill="rgba(255,255,255,0.25)"/><circle cx="300" cy="150" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="700" cy="400" r="2" fill="rgba(255,255,255,0.2)"/></svg>') repeat;
+  opacity: 0.3;
+  animation: twinkle 20s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+/* Glassmorphic form */
+.signup-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 440px;
+  width: 100%;
+  margin: 1rem;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form heading */
+.signup-form h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Input group for consistent spacing */
+.signup-form .input-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Input fields */
+.signup-form input {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(107, 72, 255, 0.5);
+}
+
+.signup-form input::placeholder {
+  color: #b3b3cc;
+  opacity: 0.8;
+}
+
+/* Error state */
+.signup-form input.error {
+  background: rgba(230, 57, 70, 0.2);
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.5);
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Error messages */
+.signup-form .error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+/* Password container */
+.signup-form .password-container {
+  position: relative;
+}
+
+.signup-form .password-container input {
+  width: 100%;
+}
+
+/* Toggle button with SVG icon */
+.signup-form .toggle-password {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b48ff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.signup-form .toggle-password::before {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%236b48ff" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>');
+  margin-right: 4px;
+}
+
+.signup-form .toggle-password.hide::before {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%236b48ff" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>');
+}
+
+.signup-form .toggle-password:hover,
+.signup-form .toggle-password:focus {
+  color: #8e6bff;
+  outline: none;
+}
+
+/* Submit button with ripple effect */
+.signup-form .submit {
+  background: linear-gradient(90deg, #6b48ff, #a78bff);
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-form .submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(107, 72, 255, 0.5);
+}
+
+.signup-form .submit:active {
+  transform: translateY(0);
+}
+
+.signup-form .submit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(107, 72, 255, 0.3);
+}
+
+.signup-form .submit::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: ripple 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+.signup-form .submit:hover::after {
+  animation: ripple 0.6s ease-out forwards;
+}
+
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 1.8rem;
+    margin: 0.5rem;
+  }
+
+  .signup-form h2 {
+    font-size: 1.7rem;
+  }
+
+  .signup-form input,
+  .signup-form .submit {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .signup-form .error-message {
+    font-size: 0.85rem;
+  }
+}
