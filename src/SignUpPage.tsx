@@ -21,7 +21,10 @@ const SignupPage = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<Signup> = (data) => {};
+  const onSubmit: SubmitHandler<Signup> = (data) => {
+    console.log(data);
+    
+  };
 
   return (
     <div className="signup-form">

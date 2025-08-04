@@ -3,7 +3,7 @@
 import "./index.css";
 import SplashPage from "./SplashPage";
 import SignupPage from "./SignUpPage";
-import SignInPage from "./LoginPage";
+import SignInPage from "./SigninPage";
 
 
 function App() {
