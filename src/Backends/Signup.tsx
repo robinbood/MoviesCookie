@@ -4,7 +4,7 @@ import { drizzle } from "drizzle-orm/bun-sql";
 import { users } from "src/db/schema"; 
 
 const client = new SQL(Bun.env.DATABASE_URL!);
-const db = drizzle(client);
+const db = drizzle({client});
 
 const SignupUser = async (req: Request) => {
     const { name, username, password } = await req.json();
