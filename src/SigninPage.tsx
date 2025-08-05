@@ -1,46 +1,46 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router";
+import { useState } from "react";
 
 interface SignIn {
-    username:string;
-    password: string;
-  
+  username: string;
+  password: string;
 }
 
 const SignInPage = () => {
+  const [respon, setResponsse] = useState<string>("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignIn>({
     defaultValues: {
-        username:"",
-        password: ""
+      username: "",
+      password: "",
     },
   });
 
   const onSubmit: SubmitHandler<SignIn> = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/api/SignIn",{
-        method:"POST",
-        headers:{"Content-type":"Application/json"},
-        body:JSON.stringify(data)
-      })
+      const response = await fetch("http://localhost:3000/api/SignIn", {
+        method: "POST",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify(data),
+      });
       if (response.ok) {
-        const navigate = useNavigate()
-        navigate("/api/home")
+        const navigate = useNavigate();
+        navigate("/api/home");
+      } else {
+        const errorText = await response.text();
+        setResponsse(errorText);
+        setTimeout(() => {
+          setResponsse("");
+        }, 200);
       }
-      else {
-        console.log(await response.json());
-        
-      }
-      
-    } catch (error:unknown) {
-      console.log("Network Error:" ,error );
-      
+    } catch (error: unknown) {
+      console.log("Network Error:", error);
     }
-    
   };
 
   return (
@@ -75,8 +75,10 @@ const SignInPage = () => {
         />
         <span className="error-message">{errors.password?.message}</span>
 
-
-        <p>Not A Member?<Link to="/api/Signup">Sign Up</Link></p>
+        <p>
+          Not A Member?<Link to="/api/Signup">Sign Up</Link>
+        </p>
+        <p>{respon}</p>
 
         <input type="submit" className="submit" value="Sign In" />
       </form>

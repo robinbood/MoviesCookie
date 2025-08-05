@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import "./Signup.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useState } from "react";
 
 interface Signup {
   name?: string;
@@ -9,6 +10,7 @@ interface Signup {
 }
 
 const SignupPage = () => {
+  const [respon,setResponsse] = useState<string>("")
   const {
     register,
     handleSubmit,
@@ -21,8 +23,27 @@ const SignupPage = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<Signup> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Signup> = async (data) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/Signup",{
+        method:"POST",
+        headers:{"Content-type":"Application/json"},
+        body:JSON.stringify(data)
+      })
+      if(response.ok){
+        const navigate = useNavigate()
+        navigate("/api/Signin")
+      }else{
+        const errorText   = await response.text()
+        setResponsse(errorText)
+        setTimeout(() => {
+          setResponsse("")
+        },800)
+      }
+    } catch (error:unknown) {
+      console.log("Network error",error);
+      
+    }
     
   };
 
@@ -67,6 +88,7 @@ const SignupPage = () => {
 
 
         <p>Already A Member?<Link to="/api/Signin">Sign in</Link></p>
+        <p>{respon}</p>
 
         <input type="submit" className="submit" value="Sign Up" />
       </form>

@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import index from "./index.html";
+import SignupUser from "./Backends/Signup";
 
 const server = serve({
   routes: {
@@ -17,6 +18,7 @@ const server = serve({
         });
       },
     },
+    "/api/Signup":SignupUser
 
     
   },
