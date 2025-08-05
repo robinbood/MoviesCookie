@@ -10,6 +10,7 @@ interface SignIn {
 
 const SignInPage = () => {
   const [respon, setResponsse] = useState<string>("");
+  
   const {
     register,
     handleSubmit,
@@ -21,15 +22,17 @@ const SignInPage = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<SignIn> = async (data) => {
     try {
       const response = await fetch("http://localhost:3000/api/SignIn", {
         method: "POST",
-        headers: { "Content-type": "Application/json" },
+        headers: { "Content-type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        const navigate = useNavigate();
+        
         navigate("/api/home");
       } else {
         const errorText = await response.text();
@@ -55,7 +58,7 @@ const SignInPage = () => {
               message: " Minimum length is 3",
             },
           })}
-          placeholder="Mike_tyson_62"
+          placeholder="Username"
           className={errors.username ? "error" : ""}
         />
 
@@ -70,7 +73,7 @@ const SignInPage = () => {
               message: "Not everyone is dumb, you know!",
             },
           })}
-          placeholder="********"
+          placeholder="Password"
           className={errors.password ? "error" : ""}
         />
         <span className="error-message">{errors.password?.message}</span>

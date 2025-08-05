@@ -23,16 +23,26 @@ const SignupPage = () => {
     },
   });
 
+  const navigate = useNavigate()
+
   const onSubmit: SubmitHandler<Signup> = async (data) => {
     try {
       const response = await fetch("http://localhost:3000/api/Signup",{
         method:"POST",
-        headers:{"Content-type":"Application/json"},
+        headers:{"Content-type":"application/json"},
         body:JSON.stringify(data)
       })
-      if(response.ok){
-        const navigate = useNavigate()
-        navigate("/api/Signin")
+      if(response.status===201){
+        setTimeout(() => {
+          navigate(
+            "/api/Signin"
+          )
+        },1000)
+        const donet = await response.text()
+        setResponsse(donet)
+        setTimeout(() => {
+          setResponsse("")
+        },1200)
       }else{
         const errorText   = await response.text()
         setResponsse(errorText)
@@ -53,7 +63,7 @@ const SignupPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("name", { required: "This is required" })}
-          placeholder="Johnny"
+          placeholder="Display Name"
           className={errors.name ? "error" : ""}
         />
         <span className="error-message">{errors.name?.message}</span>
@@ -66,7 +76,7 @@ const SignupPage = () => {
               message: "Minimum length is 3",
             },
           })}
-          placeholder="Mike_tyson_62"
+          placeholder="Username"
           className={errors.username ? "error" : ""}
         />
 
@@ -81,7 +91,7 @@ const SignupPage = () => {
               message: "Not everyone is dumb, you know!",
             },
           })}
-          placeholder="********"
+          placeholder="Password "
           className={errors.password ? "error" : ""}
         />
         <span className="error-message">{errors.password?.message}</span>

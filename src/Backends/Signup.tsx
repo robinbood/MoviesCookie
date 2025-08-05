@@ -9,7 +9,7 @@ const db = drizzle(client);
 const SignupUser = async (req: Request) => {
     const { name, username, password } = await req.json();
     const exists = await db.select().from(users).where(eq(users.username,username))
-    if(exists) {
+    if(exists.length > 0) {
         return new Response("Username already exists", {status: 400,})
     }
 
@@ -18,7 +18,7 @@ const SignupUser = async (req: Request) => {
         memoryCost:4,
         timeCost:3
     })
-    await db.insert(users).values({username,password:newPassword})
+    await db.insert(users).values({name,username,password:newPassword})
     return new Response( "User created successfully",{status:201})
 }
 

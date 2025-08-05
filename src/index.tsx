@@ -18,9 +18,11 @@ const server = serve({
         });
       },
     },
-    "/api/Signup":SignupUser
-
-    
+    "/api/Signup":{
+      async POST(req) {
+        return SignupUser(req);
+      }
+    }
   },
 
   development: process.env.NODE_ENV !== "production" && {
