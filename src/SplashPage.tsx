@@ -74,7 +74,7 @@ const SplashPage = () => {
           
         </div>
 
-        <h2><pre>WatchList</pre></h2>
+        <h2><pre>MoviePark</pre></h2>
 
       </div>
     )
