@@ -23,3 +23,5 @@ The app allows users to browse a curated movie list, view details, and save favo
 1. **Setting Up with Bun**: Initialized the project with Bun for its speed and simplicity. Bun’s `bun create --react` (with TypeScript support) set up a React app with hot-reloading, letting me iterate quickly while tweaking CSS.
 
 2. **React + TypeScript Structure**: Built reusable components with TypeScript interfaces for props and state. Kept the component tree shallow and semantic for maintainability.
+
+**Important Note**: My Pc randomly shuts down for some reason so i have to commit regularly.When I implement new features.The commit message will be an indicator for that
