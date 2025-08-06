@@ -1,8 +1,9 @@
-import { SQL } from "bun";
+import { redis, SQL } from "bun";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/bun-sql";
-import { users } from "src/db/schema"; 
-
+import { users } from "src/db/schema";
+import { RedisClient } from "bun"; 
+const Redus = new RedisClient(Bun.env.REDIS_URL!)
 const client = new SQL(Bun.env.DATABASE_URL!)
 const db = drizzle({client})
 
@@ -18,6 +19,28 @@ const SigninUser = async(req:Request) => {
     if (!isMatch) {
         return new Response("Invalid Credentials",{status:401})
     }
+    const sessionID = Bun.randomUUIDv7();
+    const key = `session:${sessionID}`;
+
+    await Redus.hmset(key,[
+        "userId",
+        user[0].id.toString(),
+        "created",
+        Date.now().toString(),
+    ])
+
+    await Redus.expire(key,1289000)
+
+    return new Response(JSON.stringify({
+        message:`Welcome ${user[0].name}`,
+        name:user[0].username
+    }),{
+        status:200,
+        headers:{
+            "Content-type":"application/json",
+            "Set-Cookie":`session:${sessionID}; HttpOnly: Secure ; SameSite-Strict ; Path=/`
+        }
+    })
 
 }
 
