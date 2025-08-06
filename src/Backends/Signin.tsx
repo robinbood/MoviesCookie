@@ -44,4 +44,4 @@ const SigninUser = async(req:Request) => {
 
 }
 
- 
+ export default SigninUser;

@@ -31,7 +31,7 @@ const SignInPage = () => {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (response.ok) {
+      if (response.status===200) {
         
         navigate("/api/home");
       } else {
