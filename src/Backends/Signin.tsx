@@ -38,10 +38,19 @@ const SigninUser = async(req:Request) => {
         status:200,
         headers:{
             "Content-type":"application/json",
-            "Set-Cookie":`session:${sessionID}; HttpOnly: Secure ; SameSite-Strict ; Path=/`
+            "Set-Cookie":`session:${sessionID}; HttpOnly; Secure; SameSite-Strict; Path=/;`
         }
     })
 
 }
 
  export default SigninUser;
+
+ export const  verifySession= async(req:Request) => {
+    const cookie =  req.headers.get("cookie");
+    if (!cookie) {
+        return new Response("No session found", { status: 401 });
+    }
+    const sessionId = cookie.split(";")[0];
+    if(!sessionId) return null;
+ }
