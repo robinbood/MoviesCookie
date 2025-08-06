@@ -44,7 +44,7 @@ const SigninUser = async (req: Request) => {
       status: 200,
       headers: {
         "Content-type": "application/json",
-        "Set-Cookie": `session:${sessionID}; HttpOnly; Secure; SameSite-Strict; Path=/;`,
+        "Set-Cookie": `sessionId=session:${sessionID}; HttpOnly; Secure; SameSite-Strict; Path=/;`,
       },
     }
   );
@@ -57,7 +57,7 @@ export const verifySession = async (req: Request) => {
   if (!cookie) {
     return new Response("No session found", { status: 401 });
   }
-  const sessionId = cookie.split(";")[0];
+  const sessionId = cookie.split("=")[1].split(";")[0];
   if (!sessionId) return null;
 
   try {
@@ -77,9 +77,9 @@ export const verifySession = async (req: Request) => {
 
 export const SignoutUser = async (req: Request) => {
   const cookie = req.headers.get("cookie");
-  const sessionId = cookie?.split(";")[0];
+  const sessionId = cookie?.split("=")[1].split(";")[0];
   const cookieHeader =
-    "; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0";
+    "sessionId; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0";
   if (!sessionId) {
     return new Response(
       JSON.stringify({
