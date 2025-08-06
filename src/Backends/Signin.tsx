@@ -53,7 +53,7 @@ const SigninUser = async (req: Request) => {
 export default SigninUser;
 
 export const verifySession = async (req: Request) => {
-  const cookie = req.headers.get("cookie");
+  const cookie = req.headers?.get("cookie");
   if (!cookie) {
     return new Response("No session found", { status: 401 });
   }
@@ -79,7 +79,7 @@ export const SignoutUser = async (req: Request) => {
   const cookie = req.headers.get("cookie");
   const sessionId = cookie?.split("=")[1].split(";")[0];
   const cookieHeader =
-    "sessionId; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0";
+    "sessionId=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0";
   if (!sessionId) {
     return new Response(
       JSON.stringify({
