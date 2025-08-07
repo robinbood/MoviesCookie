@@ -1,6 +1,7 @@
 import { serve } from "bun";
 import index from "./index.html";
 import SignupUser from "./Backends/Signup";
+import SigninUser from "./Backends/Signin";
 
 const server = serve({
   routes: {
@@ -12,10 +13,7 @@ const server = serve({
     "/api/Signin": {
       
       async POST(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "PUT",
-        });
+        return SigninUser(req);
       },
     },
     "/api/Signup":{

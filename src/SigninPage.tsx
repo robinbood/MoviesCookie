@@ -3,6 +3,7 @@ import "./Signup.css";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 
+
 interface SignIn {
   username: string;
   password: string;
@@ -26,20 +27,27 @@ const SignInPage = () => {
 
   const onSubmit: SubmitHandler<SignIn> = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/api/SignIn", {
+      const response = await fetch("http://localhost:3000/api/Signin", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.status===200) {
+        const donet = await response.json()
+        setResponsse(donet.message)
+        setTimeout(() => {
+          setResponsse("")
+        },1200)
+        setTimeout(() => {
+          navigate("/api/home")
+        },1000)
         
-        navigate("/api/home");
       } else {
-        const errorText = await response.text();
+        const errorText = await response.json();
         setResponsse(errorText);
         setTimeout(() => {
           setResponsse("");
-        }, 200);
+        }, 1200);
       }
     } catch (error: unknown) {
       console.log("Network Error:", error);
