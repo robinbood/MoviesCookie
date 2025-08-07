@@ -7,3 +7,7 @@ export const users = pgTable("users",{
     password:varchar({length:255}).notNull()
 
 })
+
+export const favourites = pgTable("favourites",{
+    id:integer().primaryKey().generatedAlwaysAsIdentity(),
+})
