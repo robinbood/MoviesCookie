@@ -48,6 +48,9 @@ const SignInPage = () => {
         setTimeout(() => {
           setResponsse("");
         }, 1200);
+        setTimeout(() => {
+          navigate("/")
+        })
       }
     } catch (error: unknown) {
       console.log("Network Error:", error);
