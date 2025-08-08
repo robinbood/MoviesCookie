@@ -10,4 +10,4 @@ export const users = pgTable("users",{
 
 export const favourites = pgTable("favourites",{
     id:integer().primaryKey().generatedAlwaysAsIdentity(),
-})
+}) 
