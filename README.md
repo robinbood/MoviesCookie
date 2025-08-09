@@ -24,4 +24,4 @@ The app allows users to browse a curated movie list, view details, and save favo
 
 2. **React + TypeScript Structure**: Built reusable components with TypeScript interfaces for props and state. Kept the component tree shallow and semantic for maintainability.
 
-**Important Note**: My Pc randomly shuts down for some reason so i have to commit regularly.When I implement new features.The commit message will be an indicator for that
+**Important Note**: This project is halted until i make my own API..TMDB is not so good for me
